@@ -245,7 +245,7 @@ ___________
 <a href="#top" class="top" id="vectors">Top</a>
 ## 2.0 Vectors
 
-Essentially, everything in R is a vector. Each vector has two characteristics: a **mode** and a **length**.
+Vectors are key to everything that R does. Each vector has two characteristics: a **mode** and a **length**.
 ```
 > x
 [1]  1  3  5  7  9 11 13 15
