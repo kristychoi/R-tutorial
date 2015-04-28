@@ -1,6 +1,3 @@
----
-output: html_document
----
 <a id="top"></a>
 # Getting to Know R
 
