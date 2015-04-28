@@ -149,13 +149,24 @@ pairs(iris,main="Pairwise correlation matrix")
 #let's leave out the factor variable and make it pretty
 pairs(iris[1:4],main="Pretty Pairwise Corr Matrix",pch=21,bg=c("red","green3","blue")[unclass(iris$Species)])
 
-#Scatterplot
+#Scatterplot and simple linear regression
 names(iris)
-plot(iris$Petal.Length, iris$Petal.Width,main="Iris Data Scatterplot",xlab='x',ylab='y')
+plot(iris$Petal.Length, iris$Petal.Width,main="Iris Data Scatterplot")
+
+#lowess curve
+scatter.smooth(iris$Petal.Length,iris$Petal.Width)
+hist(iris$Petal.Width)
+shapiro.test(iris$Petal.Width)
+
+#linear regression
 ls.fit <- lm(Petal.Length~Petal.Width,data=iris)
+summary(ls.fit)
+qqnorm(ls.fit$resid)
+
+#plotting
 plot(iris$Petal.Width,iris$Petal.Length,main="Iris Data",pch=21,bg=c("red","green3","blue")[unclass(iris$Species)])
 abline(ls.fit$coeff,col="black",lty=2)
-summary(ls.fit)
+
 
 #let's do something really cool now: PCA
 pairs(iris[1:4],main="Pretty Pairwise Corr Matrix",pch=21,bg=c("red","green3","blue")[unclass(iris$Species)])
@@ -165,6 +176,10 @@ range(sapply(iris[1:4],var))
 #now we'll standardize them
 iris.stand <- as.data.frame(scale(iris[,1:4]))
 sapply(iris.stand,sd)
+
+#some more summary stats
+tapply(iris$Petal.Length,iris$Species,mean)
+with(iris, tapply(Petal.Length,Species,mean))
 
 #now we can do the prcomp() analysis
 pca <- prcomp(iris.stand)
