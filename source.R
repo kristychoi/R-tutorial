@@ -27,7 +27,6 @@ x <- seq(1,15,2)
 mode(x)
 length(x)
 
-yy <- c(1,2,3,4,5)
 x1 <- 1:8
 rep("b",4)
 x2 <- c(rep("a",4),rep("b",4))
@@ -155,8 +154,6 @@ plot(iris$Petal.Length, iris$Petal.Width,main="Iris Data Scatterplot")
 
 #lowess curve
 scatter.smooth(iris$Petal.Length,iris$Petal.Width)
-hist(iris$Petal.Width)
-shapiro.test(iris$Petal.Width)
 
 #linear regression
 ls.fit <- lm(Petal.Length~Petal.Width,data=iris)
