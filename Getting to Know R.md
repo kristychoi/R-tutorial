@@ -45,30 +45,32 @@ You can find sample code on [GitHub][github]
 <a href="#top" class="top" id="table-of-contents">Top</a>
 ## Table of Contents
 
--	[1.0 Basic Syntax](#section)
-	-	[1.1 Useful Functions](#another-subsection)
-	-	[1.2 Logic Operations](#another-subsection)
--	[2.0 Vectors](#another-section)
-	-	[2.1 Vector Operations](#another-subsection)
-	-       [2.2 Subsets](#another-subsection)
-	-       [2.3 Lists](#another-subsection)
--   [3.0 Matrices](#another-section)
-	-	[3.1 Matrix Operations](#another-subsection)
-	- [3.2 Note: The apply() family](#another-subsection)
--   [4.0 Data](#another-section)
-    -   [4.1 Factors](#another-subsection)
-    -   [4.2 Data Frames](#another-subsection)
--   [5.0 Simple Graphics](#another-section)
-    -   [5.1 Plotting](#another-subsection)
-- [6.0 Basic Programming](#another-section)
-  -	  [6.1 Control Flow](#another-subsection)
-  -   [6.2 Functions](#another-subsection)
+-	[1.0 Basic Syntax](#basic-syntax)
+	-	[1.1 Useful Functions](#useful-functions)
+	-	[1.2 Logic Operations](#logic-operations)
+-	[2.0 Vectors](#vectors)
+	-	[2.1 Vector Operations](#vector-operations)
+	-       [2.2 Subsets](#subsets)
+	-       [2.3 Lists](#lists)
+-   [3.0 Matrices](#matrices)
+	-	[3.1 Matrix Operations](#matrix-operations)
+	- [3.2 Note: The apply() family](#apply-family)
+-   [4.0 Data](#data)
+    -   [4.0.1 Generating Data](#generating-data)
+    -   [4.1 Factors](#factors)
+    -   [4.2 Data Frames](#data-frames)
+-   [5.0 Simple Graphics](#simple-graphics)
+    -   [5.1 Histograms and Boxplots](#histograms-and-boxplots)
+    -   [5.2 Scatterplots](#scatterplots)
+- [6.0 Basic Programming](#basic-programming)
+    -   [6.1 Control Flow](#control-flow)
+    -   [6.2 Functions](#functions)
 
 -   [Additional Resources](#additionalresources)
 
 
 ------------------------------
-<a href="#top" class="top" id="section">Top</a>
+<a href="#top" class="top" id="basic-syntax">Top</a>
 ## 1.0 Basic Syntax
 
 R is processed by an interpreter, so you enter input into the prompt ">" and immediately receive a response.
@@ -136,7 +138,7 @@ Doh, we're stuck. Fortunately, many of R's functions come built-in with mechanis
 > mean(missing, na.rm=TRUE)
 [1] 5.142857
 ```
-<a id="another-subsection"></a>
+<a id="useful-functions"></a>
 ### 1.1 Useful Functions
 Some other functions that are helpful to know are listed below. Let's start with a vector called **x**.
 ```
@@ -181,7 +183,7 @@ Some other functions are:
 > abs(-2)
 [1] 2
 ```
-<a id="another-subsection"></a>
+<a id="logic-operations"></a>
 ### 1.2 Logic Operations
 R also holds vectors (which we'll cover in more detail later) of **logical values**, or just TRUE and FALSE. These can be abbreviated to T and F. Logical values will prove to be tremendously helpful when we want to filter out things we don't need. For example:
 ```
@@ -240,7 +242,7 @@ Just for reference, the **!** operator negates any logical value.
 [1] TRUE
 ```
 ___________
-<a href="#top" class="top" id="another-section">Top</a>
+<a href="#top" class="top" id="vectors">Top</a>
 ## 2.0 Vectors
 
 Essentially, everything in R is a vector. Each vector has two characteristics: a **mode** and a **length**.
@@ -310,7 +312,7 @@ a b c d
 1 2 3 4
 ```
 
-<a id="another-subsection"></a>
+<a id="vector-operations"></a>
 ### 2.1 Vector Operations
 
 So what do you do with these vectors? Well, you can perform simple vector arithmetic, which performs operations elementwise.
@@ -348,7 +350,7 @@ Other useful operations include, but are not limited to:
 %*% matrix multiplication
 ```
 
-<a id="another-subsection"></a>
+<a id="subsets"></a>
 ### 2.2 Subsets
 Sometimes we only want to work with certain parts of a vector, as opposed to the whole thing. Then we can **subset** the vector for quick and easy access.
 
@@ -415,7 +417,7 @@ And as you can probably guess, we can change values inside these vectors, too.
  [1]  1  2  0  0  0  6  7  8  9 10
 ```
 
-<a id="another-subsection"></a>
+<a id="lists"></a>
 ### 2.3 Lists
 So vectors are at the heart of everything that R does, but a potential problem is that all elements of a vector have to be the same type. That's why R uses lists to store different typed-things in a single object.
 ```
@@ -478,7 +480,7 @@ Now we can access 10 by using the name 'one' instead of going myList[[1]]. We us
 [1] "b"
 ```
 
-<a href="#top" class="top" id="section">Top</a>
+<a href="#top" class="top" id="matrices">Top</a>
 ## 3.0 Matrices
 
 Matrices in R are stored in column-major order, which means that you can think of a matrix as a series of column vectors concatenated together. This is why when you run the matrix() function,
@@ -548,7 +550,7 @@ If you're feeling creative and don't want to rely on the matrix() function, you 
 ```
 In this way, you don't have to worry about whether or not R will fill the matrix by column or row -- you're the one in charge.
 
-<a id="another-subsection"></a>
+<a id="matrix-operations"></a>
 ### 3.1 Matrix Operations
 Matrices aren't really useful if you can't do anything with them, so let's go over some basic matrix manipulation techniques.
 
@@ -694,7 +696,7 @@ Let's start by using our trusty **$** operator.
 [2,] 117.31245 143.25836    0
 [3,]  85.31815   0.00000    0
 ```
-<a id="another-subsection"></a>
+<a id="apply-family"></a>
 ### 3.2 Note: The apply() family
 Remember how I mentioned that there were functions called **colMeans()** and **rowMeans()** to obtain the column and row means of a matrix? This kind of matrix manipulation happens so often (in data frames too, which we'll talk about in the next section) that there are special functions in R for that exact purpose. They're a family of **apply()** functions, which include **apply**, **tapply**, and **sapply** (among many others!).
 
@@ -720,10 +722,10 @@ This is something that we can illustrate better with dataframes in the next sect
 
 To learn more about the apply() family of functions, visit the website below:
 http://stackoverflow.com/questions/3505701/r-grouping-functions-sapply-vs-lapply-vs-apply-vs-tapply-vs-by-vs-aggrega
-<a href="#top" class="top" id="section">Top</a>
+<a href="#top" class="top" id="data">Top</a>
 ## 4.0 Data
 
-<a id="another-subsection"></a>
+<a id="generating-data"></a>
 ### 4.0.1 Generating Data
 The bulk of the analysis that you do in R will involve a dataset that you already have, whether it's in the form of a .txt or .csv file. You may even (heaven forbid) have to hardcode in the values yourself. But when you just want some practice or run into situations where data is simply not available, simulating data can be incredibly useful.
 
@@ -781,7 +783,7 @@ We can make our results reproducible in this case, though, if we use the **set.s
 
 You'll notice that if you run the same **sample()** code consecutively without running the **set.seed(2)** command, you'll get 2 different samples. However, once the set.seed(2) function is run, R will give you the same exact samples in the same order.
 
-<a id="another-subsection"></a>
+<a id="factors"></a>
 ### 4.1 Factors
 A factor is just R's way of organizing categorical (non-numeric) variables. Let's say we have a vector with a bunch of eye colors.
 
@@ -838,7 +840,7 @@ eyecol
 
 We can also carry out basic operations on factors too, but many of them don't make sense and will return NA's. More on this later.
 
-<a id="another-subsection"></a>
+<a id="data-frames"></a>
 ### 4.2 Data Frames
 Ah, now we've finally reached data frames! This data type is super important for all kinds of statistical analyses in R. Let's examine them a little more carefully.
 
@@ -1002,12 +1004,12 @@ Error in `$<-.data.frame`(`*tmp*`, "a", value = 1:10) :
   replacement has 10 rows, data has 0
 ```
 
-<a href="#top" class="top" id="section">Top</a>
+<a href="#top" class="top" id="simple-graphics">Top</a>
 ## 5.0 Simple Graphics
 
 Visualizing your data is key before analysis! So to be perfectly honest, the built-in graphics in R aren't all that pretty. Okay yeah, it's ugly. If you're like me and enjoy looking at more aesthetically pleasing things, I'd recommend looking into the **ggplot2**, **shiny**, and **dplyr** packages. **ggplot2** was developed by Hadley Wickham of RStudio, and the graphs you can make with that package put the default graphics to shame. **shiny** takes that and makes everything interactive on the web (omg). I've attached a link to a super cool ggplot2 cheat sheet that I found the other day at the end of this tutorial -- you should learn it and teach me ^^
 
-<a id="another-subsection"></a>
+<a id="histograms-and-boxplots"></a>
 ### 5.1 Histograms and Boxplots
 
 These are some of the standard visualization techniques you can use (you'll have to do these on your own to see the output):
@@ -1072,11 +1074,11 @@ ylab = "Enter Title of Y-Axis"
 ```
 You can also use the functions **line()** and **abline()** to draw out lines on the plot directly.
 
-<a href="#top" class="top" id="another-section">Top</a>
+<a href="#top" class="top" id="basic-programming">Top</a>
 ## 6.0 Basic Programming
 You can also treat R as its own programming language and write scripts to automate things for you. 
 
-<a id="another-subsection"></a>
+<a id="control-flow"></a>
 ### 6.1 Control Flow
 The structure of **if**, **while**, and **for** loops are similar in R as it is with other programming languages. For example, let's say we have a vector and want to add 2 to each element. A roundabout way of doing this using a for loop would be something like:
 ```
@@ -1098,7 +1100,7 @@ a = 2; b = -2
 ```
 Note the slightly awkward structuring of the if/else statement. This has to do with the way that R interprets things line by line, so you have to be careful with how you place your curly brackets.
 
-<a id="another-subsection"></a>
+<a id="functions"></a>
 ### 6.2 Functions
 This is how you would write a function in R. 
 ```
